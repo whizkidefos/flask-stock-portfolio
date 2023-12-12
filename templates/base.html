@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Flask Stock Portfolio App</title>
+
+    <!--    Local CSS file for styling the application-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stocks_style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="nav-link logo" href="{{ url_for('index') }}">Flask Stock Portfolio App</a>
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('stocks') }}">List Stocks</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('add_stock') }}">Add Stock</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <!-- child template -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <small>&copy; 2023 Efosa Igbinehi | Python and JavaScript Developer | AI/ML Engineer</small>
+    </footer>
+</body>
+
+</html>
