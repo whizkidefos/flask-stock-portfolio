@@ -28,6 +28,7 @@ def index():
 
 @app.route('/about')
 def about():
+    flash('Thanks for learning about this site!', 'info')
     return render_template('about.html', title='About', developer_name='Sang min Lee', company_name='iefosa')
 
 
@@ -60,9 +61,11 @@ def add_stock():
             session['stock_symbol'] = stock_data.stock_symbol
             session['number_of_shares'] = stock_data.number_of_shares
             session['purchase_price'] = stock_data.purchase_price
+            # flash a success message
+            flash(f"Added new stock ({stock_data.stock_symbol}) successfully!", 'success')
+
             return redirect(url_for('stocks'))
         except ValidationError as e:
             print(e)
-            # flash(e, 'error')
-            # return redirect(url_for('add_stock'))
+
     return render_template('add_stock.html')
