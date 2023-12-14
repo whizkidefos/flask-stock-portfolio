@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from markupsafe import escape
 from pydantic import BaseModel, validator, ValidationError, field_validator
+import logging
+from flask.logging import default_handler
+from logging.handlers import RotatingFileHandler
 
 
 class StockModel(BaseModel):
@@ -20,9 +23,24 @@ app = Flask(__name__)
 
 app.secret_key = 'c\xe5\x05\xc0\xd8F\xf6f\xaf#\xd4\xfca\xf9*=p\xd8\xb1\xd8\xc4QO\x90\x1bn\\9\x90t\x01T'
 
+# Remove the default Flask logger
+app.logger.removeHandler(default_handler)
+
+
+# Logger configuration
+file_handler = RotatingFileHandler('flask-stock-portfolio.log', maxBytes=16384, backupCount=20)
+file_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s [in %(pathname)s:%(lineno)d]')
+file_handler.setFormatter(file_formatter)
+file_handler.setLevel(logging.INFO)
+app.logger.addHandler(file_handler)
+
+# Set the log level to INFO
+app.logger.info('Flask Stock Portfolio App Started')
+
 
 @app.route('/')
 def index():
+    app.logger.info('Calling the index() function.')
     return render_template('index.html')
 
 
@@ -63,6 +81,7 @@ def add_stock():
             session['purchase_price'] = stock_data.purchase_price
             # flash a success message
             flash(f"Added new stock ({stock_data.stock_symbol}) successfully!", 'success')
+            app.logger.info(f"Added new stock ({request.form['stock_symbol']})!")
 
             return redirect(url_for('stocks'))
         except ValidationError as e:

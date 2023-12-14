@@ -1,0 +1,14 @@
+Flask Stock Portfolio App Started
+Flask Stock Portfolio App Started
+2023-12-14 20:44:40,004 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:31]
+2023-12-14 20:52:44,748 INFO Calling the index() function. [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:36]
+2023-12-14 20:52:56,510 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:31]
+2023-12-14 20:52:56,863 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:31]
+2023-12-14 20:57:09,788 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:32]
+2023-12-14 21:04:46,372 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:33]
+2023-12-14 21:05:15,298 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:36]
+2023-12-14 21:05:20,800 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:37]
+2023-12-14 21:07:07,084 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:38]
+2023-12-14 21:07:58,430 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:38]
+2023-12-14 21:12:17,507 INFO Flask Stock Portfolio App Started [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:38]
+2023-12-14 21:13:03,654 INFO Added new stock (SBUX)! [in C:\Users\efosa\OneDrive\Desktop\projects\flask\flask-stock-portfolio\app.py:84]
