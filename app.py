@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash
 import logging
 from flask.logging import default_handler
 from logging.handlers import RotatingFileHandler
+import os
 
 # Import the Blueprint objects from the project's folder
 from project.stocks import stocks_blueprint
@@ -9,13 +10,16 @@ from project.users import users_blueprint
 
 app = Flask(__name__)
 
-app.secret_key = 'c\xe5\x05\xc0\xd8F\xf6f\xaf#\xd4\xfca\xf9*=p\xd8\xb1\xd8\xc4QO\x90\x1bn\\9\x90t\x01T'
+# Load the configuration from the config.py file
+config_type = os.getenv('CONFIG_TYPE', default='config.DevelopmentConfig')
+app.config.from_object(config_type)
+
 
 # Remove the default Flask logger
 app.logger.removeHandler(default_handler)
 
 # Logger configuration
-file_handler = RotatingFileHandler('flask-stock-portfolio.log', maxBytes=16384, backupCount=20)
+file_handler = RotatingFileHandler('instance/flask-stock-portfolio.log', maxBytes=16384, backupCount=20)
 file_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s [in %(pathname)s:%(lineno)d]')
 file_handler.setFormatter(file_formatter)
 file_handler.setLevel(logging.INFO)

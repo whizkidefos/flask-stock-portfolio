@@ -12,3 +12,9 @@ On WINDOWS:
 
 #### To start the development server in debug mode
 run: flask --app app --debug run
+
+# Instance Folder
+
+## Purpose
+
+The `instance` folder is used to store run-time data, including log files and database files (SQLite).

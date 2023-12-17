@@ -1,6 +1,7 @@
 from flask import render_template, current_app as app, request, session, flash, redirect, url_for
 from pydantic import BaseModel, ValidationError, field_validator
 from . import stocks_blueprint
+from datetime import date
 
 # --------------
 # Helper Classes
@@ -26,8 +27,9 @@ class StockModel(BaseModel):
 #
 @stocks_blueprint.route('/')
 def index():
+    get_current_year = date.today().year
     app.logger.info('Calling the index() function.')
-    return render_template('stocks/index.html')
+    return render_template('stocks/index.html', get_current_year=get_current_year)
 
 
 @stocks_blueprint.route('/add_stock', methods=['GET', 'POST'])
