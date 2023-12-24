@@ -1,10 +1,10 @@
 """
-This file (test_app.py) contains the unit tests for the app.py file.
+This file (test_app.py) contains the unit tests for the Flask application.
 """
+
+from project.stocks.routes import StockModel
 import pytest
 from pydantic import ValidationError
-
-from app import StockModel
 
 
 def test_validate_stock_data_nominal():

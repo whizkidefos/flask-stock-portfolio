@@ -1,4 +1,4 @@
-from flask import render_template, current_app as app, request, session, flash, redirect, url_for
+from flask import render_template, current_app, request, session, flash, redirect, url_for
 from pydantic import BaseModel, ValidationError, field_validator
 from . import stocks_blueprint
 from datetime import date
@@ -49,7 +49,7 @@ class StockModel(BaseModel):
 @stocks_blueprint.route('/')
 def index():
     get_current_year = date.today().year
-    app.logger.info('Calling the index() function.')
+    current_app.logger.info('Calling the index() function.')
     return render_template('stocks/index.html', get_current_year=get_current_year)
 
 
@@ -70,7 +70,7 @@ def add_stock():
             session['purchase_price'] = stock_data.purchase_price
 
             flash(f"Added new stock ({stock_data.stock_symbol})!", 'success')
-            app.logger.info(f"Added new stock ({request.form['stock_symbol']})!")
+            current_app.logger.info(f"Added new stock ({request.form['stock_symbol']})!")
 
             return redirect(url_for('stocks.list_stocks'))
         except ValidationError as e:
@@ -82,3 +82,10 @@ def add_stock():
 @stocks_blueprint.route('/stocks/')
 def list_stocks():
     return render_template('stocks/list_stocks.html')
+
+
+@stocks_blueprint.route('/about')
+def about():
+    get_current_year = date.today().year
+    flash('Thanks for learning about this site!', 'info')
+    return render_template('about.html', title='About', developer_name='Sang min Lee', company_name='iefosa', get_current_year=get_current_year)
