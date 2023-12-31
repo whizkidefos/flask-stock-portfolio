@@ -1,5 +1,5 @@
 from . import users_blueprint
-from flask import render_template, current_app as app, request, session, flash, redirect, url_for
+from flask import render_template, current_app as app, request, session, flash, redirect, url_for, abort
 
 
 # ------
@@ -20,3 +20,12 @@ def register():
         return redirect(url_for('users.login'))
 
     return render_template('users/register.html')
+
+
+@users_blueprint.errorhandler(403)
+def page_forbidden(e):
+    return render_template('users/403.html'), 403
+
+@users_blueprint.route('/admin')
+def admin():
+    abort(403)
